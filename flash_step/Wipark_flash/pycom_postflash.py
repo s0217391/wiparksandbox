@@ -6,7 +6,7 @@ reset_pin = Pin(19)
 bootmode_pin = Pin(26)
 
 reset_pin.set_pin_direction(Pin.OUTPUT_MODE)
-bootmode_pin.set_pin_direction(Pin.INPUT_MODE)
+bootmode_pin.set_pin_direction(Pin.OUTPUT_MODE)
 
 bootmode_pin.set_pin_value(Pin.ENABLE)
 sleep(1)

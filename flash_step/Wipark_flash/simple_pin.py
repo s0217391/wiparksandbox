@@ -18,12 +18,15 @@ class Pin(object):
         assert type(pin_number) is int, self.pin_type_error_str
         self.pin_number = pin_number
         # Initialize pin
-        self.__write_to_file( "{}/unexport".format(self.gpio_path) , self.pin_number)
+	try:
+            self.__write_to_file( "{}/unexport".format(self.gpio_path) , self.pin_number)
+	except:
+	    pass
         self.__write_to_file("{}/export".format(self.gpio_path), self.pin_number)
 
     def __write_to_file(self, filename, value):
         with open(filename, 'w') as f:
-            f.write(value)
+            f.write(str(value))
 
     def get_pin_value(self):
         value = 0
@@ -35,8 +38,8 @@ class Pin(object):
 
     def set_pin_direction(self, direction):
         assert direction == self.OUTPUT_MODE or direction == self.INPUT_MODE, mode_value_error_str
-        self.__write_to_file('{}/gpio{}/direction'.format(self.gpio_path, pin), direction)
+        self.__write_to_file('{}/gpio{}/direction'.format(self.gpio_path, self.pin_number), direction)
 
     def set_pin_value(self, value):
         assert value == self.DISABLE or value == self.ENABLE, mode_value_error_str
-        self.__write_to_file('{}/gpio{}/value'.format(self.gpio_path, pin), value)
+        self.__write_to_file('{}/gpio{}/value'.format(self.gpio_path, self.pin_number), value)
