@@ -17,7 +17,7 @@ class Pin(object):
     def __init__(self, pin_number):
         assert type(pin_number) is int, self.pin_type_error_str
         self.pin_number = pin_number
-        // Initialize pin
+        # Initialize pin
         self.__write_to_file("{}/unexport".format(self.gpio_path), self.pin_number)
         self.__write_to_file("{}/export".format(self.gpio_path), self.pin_number)
 
