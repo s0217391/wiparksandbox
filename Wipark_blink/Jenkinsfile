@@ -1,0 +1,3 @@
+build('Test_job_preflash')
+build('Test_job_root')
+build('Test_job_postflash')
